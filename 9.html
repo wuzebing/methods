@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+	快速排序 <br/>
+
+<pre>
+	function sort(arr){
+		if(arr.length<=0) return []; 
+		let leftArr = [];
+		let rightArr = [];
+
+		let middle = arr[0];
+
+		for(var i=1;i<arr.length;i++){
+			if(arr[i]>middle){
+				rightArr.push(arr[i]);
+			}else{
+				leftArr.push(arr[i]);
+			}
+		}
+
+		return [].concat(sort(leftArr),[middle],sort(rightArr));
+	}
+	
+	window.onload = function(){
+		console.log(sort([1,33,67,29,30,2,88,65,23]))
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+
+	function sort(arr){
+		if(arr.length<=0) return []; 
+		let leftArr = [];
+		let rightArr = [];
+
+		let middle = arr[0];
+
+		for(var i=1;i<arr.length;i++){
+			if(arr[i]>middle){
+				rightArr.push(arr[i]);
+			}else{
+				leftArr.push(arr[i]);
+			}
+		}
+
+		return [].concat(sort(leftArr),[middle],sort(rightArr));
+	}
+	
+	window.onload = function(){
+		console.log(sort([1,33,67,29,30,2,88,65,23]))
+	}
+</script>

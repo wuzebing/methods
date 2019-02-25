@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+		html,body{
+			height: 500%;
+		}
+	</style>
+</head>
+<body>
+	路由的实现 <br/>
+
+	
+<pre>
+	function Router(){
+		this.routers = {};
+		
+		this.reflesh = function(){
+			let currenturl = location.hash.slice(1)||'/';
+			this.routers[currenturl]&&this.routers[currenturl]();
+		}
+
+		this.init = function(){
+			window.addEventListener("load",this.reflesh.bind(this),false);
+			window.addEventListener("hashchange",this.reflesh.bind(this),false);
+		}
+	}
+
+	Router.prototype.route = function(path,callback){
+		this.routers[path] = callback || function(){};
+	}
+
+	window.router = new Router();
+	router.init();
+
+	router.route('red', function () {
+	    document.getElementById("content").innerHTML = 'red';
+	});
+	router.route('blue', function () {
+	     document.getElementById("content").innerHTML = 'blue';
+	});
+	router.route('green', function () {
+	    document.getElementById("content").innerHTML = 'green';
+	});
+</pre>
+
+<a href='#red'>red</a>
+<a href='#blue'>blue</a>
+<a href='#green'>green</a>
+
+<div id="content" style="height: 300px;width:500px;border:1px solid #ccc;"> </div>
+	
+</body>
+</html>
+	
+<script>
+	function Router(){
+		this.routers = {};
+
+		this.reflesh = function(){
+			let currenturl = location.hash.slice(1)||'/';
+			this.routers[currenturl]&&this.routers[currenturl]();
+		}
+
+		this.init = function(){
+			window.addEventListener("load",this.reflesh.bind(this),false);
+			window.addEventListener("hashchange",this.reflesh.bind(this),false);
+		}
+	}
+
+	Router.prototype.route = function(path,callback){
+		this.routers[path] = callback || function(){};
+	}
+
+	window.router = new Router();
+	router.init();
+
+	router.route('red', function () {
+	    document.getElementById("content").innerHTML = 'red';
+	});
+	router.route('blue', function () {
+	     document.getElementById("content").innerHTML = 'blue';
+	});
+	router.route('green', function () {
+	    document.getElementById("content").innerHTML = 'green';
+	});
+
+</script>

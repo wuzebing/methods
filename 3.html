@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+		html,body{
+			height: 500%;
+		}
+	</style>
+</head>
+<body>
+	函数防抖 <br/>
+
+	函数防抖的应用场景，最常见的就是用户注册时候的手机号码验证和邮箱验证了。只有等用户输入完毕后，前端才需要检查格式是否正确，如果不正确，再弹出提示语<br/>
+
+	<button id="but">点击测试防抖</button>
+	
+<pre>
+	function click(){   //节流的函数体
+		console.log(Date.now())
+	}
+
+	function rightclick(fn,delay){
+		var timeout = null;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				fn();
+			},delay)
+		}
+	}
+	window.onload =  function(){
+		document.getElementById('but').onclick = rightclick(click,2000);
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+
+	function click(){   //节流的函数体
+		console.log(Date.now())
+	}
+
+	function rightclick(fn,delay){
+		var timeout = null;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				fn();
+			},delay)
+		}
+	}
+	window.onload =  function(){
+		document.getElementById('but').onclick = rightclick(click,2000);
+	}
+</script>

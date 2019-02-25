@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+	jsonp <br/>
+
+<pre>
+	function jsonp(options){
+		return new Promise((resolve,reject)=>{
+			window[options.cb] = function(data){
+				resolve(data);
+			};
+
+			var script = document.createElement("script");
+			script.src = options.url;
+			document.body.appendChild(script);
+		})
+	}
+	window.onload = function(){
+		jsonp({
+		    url: 'http://localhost:8188/jsonp/test',
+		    cb: 'callback',
+		 }).then(data=>{
+		 	console.log(data)
+		 })
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+	function jsonp(options){
+		return new Promise((resolve,reject)=>{
+			window[options.cb] = function(data){
+				resolve(data);
+			};
+
+			var script = document.createElement("script");
+			script.src = options.url;
+			document.body.appendChild(script);
+		})
+	}
+	window.onload = function(){
+		jsonp({
+		    url: 'http://localhost:8188/jsonp/test',
+		    cb: 'callback',
+		 }).then(data=>{
+		 	console.log(data)
+		 })
+	}
+</script>

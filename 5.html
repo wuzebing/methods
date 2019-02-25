@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+	ajax <br/>
+
+<pre>
+	function ajax(options){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET',options.url,true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304){
+				options.success.call(this,xhr.responseText);
+			}
+		}
+		xhr.send();
+		
+	}
+	window.onload = function(){
+		ajax({
+		    url: '/api/test',
+		    data: {
+		    },
+		    success: function(){
+		        console.log(111)
+		    },
+		    error: function(){
+		    }
+		 })
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+	function ajax(options){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET',options.url,true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304){
+				options.success.call(this,xhr.responseText);
+			}
+		}
+		xhr.send();
+		
+	}
+	window.onload = function(){
+		ajax({
+		    url: '/api/test',
+		    data: {
+		    },
+		    success: function(){
+		        console.log(111)
+		    },
+		    error: function(){
+		    }
+		 })
+	}
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+		html,body{
+			height: 500%;
+		}
+	</style>
+</head>
+<body>
+	函数节流 <br/>
+
+	函数节流是指一定时间内js方法只跑一次。比如人的眨眼睛，就是一定时间内眨一次。这是函数节流最形象的解释<br/>
+
+	函数节流应用的实际场景，多数在监听页面元素滚动事件的时候会用到。因为滚动事件，是一个高频触发的事件<br/>
+
+	
+<pre>
+	window.onscroll = rightScroll(scroll,500);
+
+	function scroll(){   //节流的函数体
+		console.log(Date.now())
+	}
+
+	function rightScroll(fn,delay){
+		var oldTime = 0;
+		return function(){
+			var newTime = Date.now();
+			if(newTime-oldTime > delay){
+				fn();
+				oldTime = newTime;
+			}
+		}
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+	window.onscroll = rightScroll(scroll,500);
+
+	function scroll(){   //节流的函数体
+		console.log(Date.now())
+	}
+
+	function rightScroll(fn,delay){
+		var oldTime = 0;
+		return function(){
+			var newTime = Date.now();
+			if(newTime-oldTime > delay){
+				fn();
+				oldTime = newTime;
+			}
+		}
+	}
+</script>

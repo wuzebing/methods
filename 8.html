@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		pre{
+			background-color: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+	call实现bind <br/>
+
+<pre>
+	Function.prototype.bind = function(){
+		var _t = arguments[0];
+		var arg = arguments[1];
+		var _this = this;
+		
+		return function(){
+			_this.call(_t,arg);
+		}
+	}
+	window.onload = function(){
+		function Fun(){
+		}
+		Fun.prototype.sea = function(who){
+			console.log("sea:"+who);
+		}
+		function chl(){
+		}
+		var chlsea = Fun.prototype.sea.bind(chl,'chl');
+		chlsea();
+	}
+</pre>
+</body>
+</html>
+	
+<script>
+	Function.prototype.bind = function(){
+		var _t = arguments[0];
+		var arg = arguments[1];
+		var _this = this;
+		
+		return function(){
+			_this.call(_t,arg);
+		}
+	}
+	window.onload = function(){
+		function Fun(){
+		}
+		Fun.prototype.sea = function(who){
+			console.log("sea:"+who);
+		}
+		function chl(){
+		}
+		var chlsea = Fun.prototype.sea.bind(chl,'chl');
+		chlsea();
+	}
+</script>
